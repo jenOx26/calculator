@@ -38,96 +38,95 @@ eight.addEventListener('click', display8);
 nine.addEventListener('click', display9);
 
 function clearDisplay() {
-    display.value = 0;
+    display.value = '0';
 }
 function displayZero() {
-    if (display.value == 0) {
-        display.value = 0;
-    } else {
-        display.value += 0;
-    } 
+    display.value += '0';
 }
 
 function displayDec() {
-    display.value += '.';
+    if (display.value.includes('.')) {
+        return display.value;
+    } else {
+        display.value += '.';
+    }   
 }
 
 function changePosNeg() {
-    display.value *= -1;
+    parseFloat(display.value *= -1);
 }
 
 function display1() {
-    if (display.value == 0) {
-        display.value = 1;
+    if (display.value == '0') {
+        display.value ='1';
     } else {
-        display.value += 1;
+        display.value += '1';
     } 
 }
 
 function display2() {
-    if (display.value == 0) {
-        display.value = 2;
+    if (display.value == '0') {
+        display.value ='2';
     } else {
-        display.value += 2;
+        display.value += '2';
     } 
 }
 
 function display3() {
-    if (display.value == 0) {
-        display.value = 3;
+    if (display.value == '0') {
+        display.value ='3';
     } else {
-        display.value += 3;
+        display.value += '3';
     } 
 }
 
 function display4() {
-    if (display.value == 0) {
-        display.value = 4;
+    if (display.value == '0') {
+        display.value ='4';
     } else {
-        display.value += 4;
+        display.value += '4';
     } 
 }
 
 function display5() {
-    if (display.value == 0) {
-        display.value = 5;
+    if (display.value == '0') {
+        display.value ='5';
     } else {
-        display.value += 5;
+        display.value += '5';
     } 
 }
 
 function display6() {
-    if (display.value == 0) {
-        display.value = 6;
+    if (display.value == '0') {
+        display.value = '6';
     } else {
-        display.value += 6;
+        display.value += '6';
     } 
 }
 
 function display7() {
-    if (display.value == 0) {
-        display.value = 7;
+    if (display.value == '0') {
+        display.value = '7';    
     } else {
-        display.value += 7;
+        display.value += '7';
     } 
 }
 
 function display8() {
-    if (display.value == 0) {
-        display.value = 8;
+    if (display.value == '0') {
+        display.value = '8';
     } else {
-        display.value += 8;
+        display.value += '8';
     } 
 }
 
 function display9() {
-    if (display.value == 0) {
-        display.value = 9;
+    if (display.value == '0') {
+        display.value = '9';
     } else {
-        display.value += 9;
+        display.value += '9';
     } 
 }
-
 
 function add(a, b) {
     return a + b;
