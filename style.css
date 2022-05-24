@@ -1,35 +1,48 @@
 .container {
-    display: flexbox;
+    display: flex;
     flex-direction: column;
 }
 
 #calculator {
-    display: flexbox;
+    display: flex;
     flex-direction: column;
     width: 200px;
-    height: 400px;
-    border: 10px solid black;
+    height: 330px;
+    border: 15px solid black;
     background-color: black;
+    gap: 20px;
 }
 
 #display {
-    background-color: aqua;
-    height: 100px;
+    background-color: gray;
+    height: 60px;
+    text-align: right;
+    font-size: 50px;
 }
 
 #buttons {
-    display: flexbox;
+    display: flex;
     flex-direction: row;
+    gap: 10px;
+    align-items: center;
 }
 
 #operators {
-    display: flexbox;
+    display: flex;
     flex-direction: column;
+    gap: 10px;
+}
+
+#divideBtn, #multiplyBtn, #subtractBtn, #addBtn, #equalBtn {
+    width: 40px;
+    height: 40px;
+    background-color: chartreuse;
 }
 
 #mainBtns {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 #numBtns {
@@ -37,4 +50,26 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    gap: 10px 10px;
 }
+
+#otherBtns {
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+ 
+#nine, #eight, #seven, #six, #five, #four, #three, #two, #one, 
+#decimalBtn, #posNegBtn {
+    width: 40px;
+    height: 40px;
+} 
+
+#zero, #clearBtn {
+    width: 93px;
+}
+
+#clearBtn, #posNegBtn {
+    background-color: aqua;
+}
+
