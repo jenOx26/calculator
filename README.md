@@ -1,1 +1,3 @@
 # calculator
+
+An onscreen calculator.
