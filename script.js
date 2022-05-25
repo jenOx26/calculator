@@ -16,15 +16,21 @@ let six = document.getElementById('six');
 let seven = document.getElementById('seven');
 let eight = document.getElementById('eight');
 let nine = document.getElementById('nine');
+//Create way for display to move to the left and keep showing new #'s added.
 let display = document.getElementById('display');
+
+let a = 0;
+let b = 0;
+let o = '-';
+let currentNum;
 
 clearBtn.addEventListener('click', clearDisplay);
 posNegBtn.addEventListener('click', changePosNeg);
-//divideBtn.addEventListener('click', );
-//multiplyBtn.addEventListener('click', );
-//subtractBtn.addEventListener('click', );
-//addBtn.addEventListener('click', );
-//equalBtn.addEventListener('click', );
+divideBtn.addEventListener('click', dividePressed);
+multiplyBtn.addEventListener('click', multiplyPressed);
+subtractBtn.addEventListener('click', subtractPressed);
+addBtn.addEventListener('click', addPressed);
+equalBtn.addEventListener('click', equalPressed);
 zero.addEventListener('click', displayZero);
 decimalBtn.addEventListener('click', displayDec);
 one.addEventListener('click', display1);
@@ -39,21 +45,26 @@ nine.addEventListener('click', display9);
 
 function clearDisplay() {
     display.value = '0';
+    currentNum = display.value;
 }
+
 function displayZero() {
     display.value += '0';
+    currentNum = display.value;
 }
 
 function displayDec() {
     if (display.value.includes('.')) {
-        return display.value;
+        display.value;
     } else {
         display.value += '.';
     }   
+    currentNum = display.value;
 }
 
 function changePosNeg() {
     parseFloat(display.value *= -1);
+    currentNum = display.value;
 }
 
 function display1() {
@@ -62,6 +73,7 @@ function display1() {
     } else {
         display.value += '1';
     } 
+    currentNum = display.value;
 }
 
 function display2() {
@@ -70,6 +82,7 @@ function display2() {
     } else {
         display.value += '2';
     } 
+    currentNum = display.value;
 }
 
 function display3() {
@@ -78,6 +91,7 @@ function display3() {
     } else {
         display.value += '3';
     } 
+    currentNum = display.value;
 }
 
 function display4() {
@@ -86,6 +100,7 @@ function display4() {
     } else {
         display.value += '4';
     } 
+    currentNum = display.value;
 }
 
 function display5() {
@@ -94,6 +109,7 @@ function display5() {
     } else {
         display.value += '5';
     } 
+    currentNum = display.value;
 }
 
 function display6() {
@@ -102,6 +118,7 @@ function display6() {
     } else {
         display.value += '6';
     } 
+    currentNum = display.value;
 }
 
 function display7() {
@@ -110,6 +127,7 @@ function display7() {
     } else {
         display.value += '7';
     } 
+    currentNum = display.value;
 }
 
 function display8() {
@@ -118,6 +136,7 @@ function display8() {
     } else {
         display.value += '8';
     } 
+    currentNum = display.value;
 }
 
 function display9() {
@@ -126,32 +145,66 @@ function display9() {
     } else {
         display.value += '9';
     } 
+    currentNum = display.value;
+}
+
+function addPressed() {
+    display.value = '';
+    a = parseFloat(`${currentNum}`);
+    o = '+';
+}
+
+function subtractPressed() {
+    display.value = '';
+    a = parseFloat(`${currentNum}`);
+    o = '-';
+}
+
+function multiplyPressed() {
+    display.value = '';
+    o = '*';
+    a = parseFloat(`${currentNum}`);
+}
+
+function dividePressed() {
+    o = '/';
+    display.value = '';
+    a = parseFloat(`${currentNum}`);
+}
+
+function equalPressed() {
+    b = parseFloat(`${currentNum}`);
+    operate(o, a, b);
 }
 
 function add(a, b) {
-    return a + b;
+    display.value = a + b;
+    currentNum = display.value;
 }
 
 function subtract(a, b) {
-    return a - b;
+    display.value = a - b;
+    currentNum = display.value;
 }
 
 function multiply(a, b) {
-    return a * b;
+    display.value = a * b;
+    currentNum = display.value;
 }
 
 function divide(a, b) {
-    return a / b;
+    display.value = a / b;
+    currentNum = display.value;
 }
 
-function operate(o, a, b) {
-    if (o = '+') {
-        return add(a, b);
-    } else if (o = '-') {
+function operate() {
+    if (o == '-') {
         return subtract(a, b);
-    } else if (o = '*') {
+    } else if (o == '+') {
+        return add(a, b);
+    } else if (o == '*') {
         return multiply(a, b);
-    } else if (o = '/') {
+    } else if (o == '/') {
         return divide(a, b);
     }
 
