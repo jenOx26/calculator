@@ -23,6 +23,7 @@ let a = 0;
 let b = 0;
 let o = '-';
 let currentNum;
+let appendable = true;
 
 clearBtn.addEventListener('click', clearDisplay);
 posNegBtn.addEventListener('click', changePosNeg);
@@ -45,21 +46,33 @@ nine.addEventListener('click', display9);
 
 function clearDisplay() {
     display.value = '0';
+    a = 0;
+    b = 0;
     currentNum = display.value;
 }
 
 function displayZero() {
-    display.value += '0';
-    currentNum = display.value;
+    if (appendable === true) {
+        display.value += '0';
+        currentNum = display.value;
+    } else {
+        display.value = 0;
+    }
+    appendable = true;
 }
 
 function displayDec() {
-    if (display.value.includes('.')) {
-        display.value;
+    if (appendable === true) {
+        if (display.value.includes('.')) {
+            display.value;
+        } else {
+            display.value += '.';
+        }   
+        currentNum = display.value;
     } else {
-        display.value += '.';
-    }   
-    currentNum = display.value;
+        display.value = '0.';
+        appendable = true;
+    }
 }
 
 function changePosNeg() {
@@ -68,144 +81,177 @@ function changePosNeg() {
 }
 
 function display1() {
-    if (display.value == '0') {
+    if (display.value == '0' || appendable === false) {
         display.value ='1';
     } else {
         display.value += '1';
     } 
     currentNum = display.value;
+    appendable = true;
 }
 
 function display2() {
-    if (display.value == '0') {
+    if (display.value == '0' || appendable === false) {
         display.value ='2';
     } else {
         display.value += '2';
     } 
     currentNum = display.value;
+    appendable = true;
 }
 
 function display3() {
-    if (display.value == '0') {
+    if (display.value == '0' || appendable === false) {
         display.value ='3';
     } else {
         display.value += '3';
     } 
     currentNum = display.value;
+    appendable = true;
 }
 
 function display4() {
-    if (display.value == '0') {
+    if (display.value == '0' || appendable === false) {
         display.value ='4';
     } else {
         display.value += '4';
     } 
     currentNum = display.value;
+    appendable = true;
 }
 
 function display5() {
-    if (display.value == '0') {
+    if (display.value == '0' || appendable === false) {
         display.value ='5';
     } else {
         display.value += '5';
     } 
     currentNum = display.value;
+    appendable = true;
 }
 
 function display6() {
-    if (display.value == '0') {
+    if (display.value == '0' || appendable === false) {
         display.value = '6';
     } else {
         display.value += '6';
     } 
     currentNum = display.value;
+    appendable = true;
 }
 
 function display7() {
-    if (display.value == '0') {
+    if (display.value == '0' || appendable === false) {
         display.value = '7';    
     } else {
         display.value += '7';
     } 
     currentNum = display.value;
+    appendable = true;
 }
 
 function display8() {
-    if (display.value == '0') {
+    if (display.value == '0' || appendable === false) {
         display.value = '8';
     } else {
         display.value += '8';
     } 
     currentNum = display.value;
+    appendable = true;
 }
 
 function display9() {
-    if (display.value == '0') {
+    if (display.value == '0' || appendable === false) {
         display.value = '9';
     } else {
         display.value += '9';
     } 
     currentNum = display.value;
+    appendable = true;
 }
 
 function addPressed() {
-    display.value = '';
-    a = parseFloat(`${currentNum}`);
+    if (a !== 0) {
+        b = parseFloat(`${currentNum}`)
+        operate();
+    } else {
+        a = parseFloat(`${currentNum}`);
+    }
     o = '+';
+    appendable = false;
 }
 
 function subtractPressed() {
-    display.value = '';
-    a = parseFloat(`${currentNum}`);
+    if (a !== 0) {
+        b = parseFloat(`${currentNum}`)
+        operate();
+    } else {
+        a = parseFloat(`${currentNum}`);
+    }
     o = '-';
+    appendable = false;
 }
 
 function multiplyPressed() {
-    display.value = '';
+    if (a !== 0) {
+        b = parseFloat(`${currentNum}`)
+        operate();
+    } else {
+        a = parseFloat(`${currentNum}`);
+    }
     o = '*';
-    a = parseFloat(`${currentNum}`);
+    appendable = false;
 }
 
 function dividePressed() {
+    if (a !== 0) {
+        b = parseFloat(`${currentNum}`)
+        operate();
+    } else {
+        a = parseFloat(`${currentNum}`);
+    }
     o = '/';
-    display.value = '';
-    a = parseFloat(`${currentNum}`);
+    appendable = false;
 }
 
 function equalPressed() {
     b = parseFloat(`${currentNum}`);
-    operate(o, a, b);
+    operate();
 }
 
-function add(a, b) {
+function add() {
     display.value = a + b;
-    currentNum = display.value;
+    a = parseFloat(`${display.value}`);
+    appendable = false;
 }
 
-function subtract(a, b) {
+function subtract() {
+    result = 
     display.value = a - b;
-    currentNum = display.value;
+    a = parseFloat(`${display.value}`);
+    appendable = false;
 }
 
-function multiply(a, b) {
+function multiply() {
     display.value = a * b;
-    currentNum = display.value;
+    a = parseFloat(`${display.value}`);
+    appendable = false;
 }
 
-function divide(a, b) {
+function divide() {
     display.value = a / b;
-    currentNum = display.value;
+    a = parseFloat(`${display.value}`);
+    appendable = false;
 }
 
 function operate() {
     if (o == '-') {
-        return subtract(a, b);
+        return subtract();
     } else if (o == '+') {
-        return add(a, b);
+        return add();
     } else if (o == '*') {
-        return multiply(a, b);
+        return multiply();
     } else if (o == '/') {
-        return divide(a, b);
+        return divide();
     }
-
 }
