@@ -24,6 +24,7 @@ let b = 0;
 let o = '-';
 let currentNum;
 let appendable = true;
+let lastButtonPressed;
 
 clearBtn.addEventListener('click', clearDisplay);
 posNegBtn.addEventListener('click', changePosNeg);
@@ -88,6 +89,7 @@ function display1() {
     } 
     currentNum = display.value;
     appendable = true;
+    lastButtonPressed = null;
 }
 
 function display2() {
@@ -98,6 +100,7 @@ function display2() {
     } 
     currentNum = display.value;
     appendable = true;
+    lastButtonPressed = null;
 }
 
 function display3() {
@@ -108,6 +111,7 @@ function display3() {
     } 
     currentNum = display.value;
     appendable = true;
+    lastButtonPressed = null;
 }
 
 function display4() {
@@ -118,6 +122,7 @@ function display4() {
     } 
     currentNum = display.value;
     appendable = true;
+    lastButtonPressed = null;
 }
 
 function display5() {
@@ -128,6 +133,7 @@ function display5() {
     } 
     currentNum = display.value;
     appendable = true;
+    lastButtonPressed = null;
 }
 
 function display6() {
@@ -138,6 +144,7 @@ function display6() {
     } 
     currentNum = display.value;
     appendable = true;
+    lastButtonPressed = null;
 }
 
 function display7() {
@@ -148,6 +155,7 @@ function display7() {
     } 
     currentNum = display.value;
     appendable = true;
+    lastButtonPressed = null;
 }
 
 function display8() {
@@ -158,6 +166,7 @@ function display8() {
     } 
     currentNum = display.value;
     appendable = true;
+    lastButtonPressed = null;
 }
 
 function display9() {
@@ -168,6 +177,7 @@ function display9() {
     } 
     currentNum = display.value;
     appendable = true;
+    lastButtonPressed = null;
 }
 
 function addPressed() {
@@ -179,6 +189,7 @@ function addPressed() {
     }
     o = '+';
     appendable = false;
+    lastButtonPressed = addBtn;
 }
 
 function subtractPressed() {
@@ -190,6 +201,7 @@ function subtractPressed() {
     }
     o = '-';
     appendable = false;
+    lastButtonPressed = subtractBtn;
 }
 
 function multiplyPressed() {
@@ -201,6 +213,7 @@ function multiplyPressed() {
     }
     o = '*';
     appendable = false;
+    lastButtonPressed = multiplyBtn;
 }
 
 function dividePressed() {
@@ -212,11 +225,13 @@ function dividePressed() {
     }
     o = '/';
     appendable = false;
+    lastButtonPressed = divideBtn;
 }
 
 function equalPressed() {
     b = parseFloat(`${currentNum}`);
     operate();
+    lastButtonPressed = equalBtn;
 }
 
 function add() {
@@ -245,13 +260,18 @@ function divide() {
 }
 
 function operate() {
-    if (o == '-') {
-        return subtract();
-    } else if (o == '+') {
-        return add();
-    } else if (o == '*') {
-        return multiply();
-    } else if (o == '/') {
-        return divide();
+    if (lastButtonPressed == divideBtn || lastButtonPressed == multiplyBtn || lastButtonPressed == 
+        addBtn || lastButtonPressed == subtractBtn ||lastButtonPressed == equalBtn) {
+        return null;
+    } else {
+        if (o == '-') {
+            return subtract();
+        } else if (o == '+') {
+            return add();
+        } else if (o == '*') {
+            return multiply();
+        } else if (o == '/') {
+            return divide();
+        }
     }
 }
